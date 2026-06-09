@@ -251,36 +251,31 @@
     function hideLoading() { $('.ai-legacy-loading').remove(); }
 
     function xhrJson(method, url, body, headers, success, fail) {
-    var xhr = new XMLHttpRequest();
-    var done = false;
+            var xhr = new XMLHttpRequest();
+            var done = false;
 
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState !== 4 || done) return;
-        done = true;
-        if (xhr.status >= 200 && xhr.status < 300) {
-            try { success(JSON.parse(xhr.responseText || '{}')); } catch (e) { fail(e); }
-        } else { fail(new Error('HTTP ' + xhr.status)); }
-    };
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState !== 4 || done) return;
+                done = true;
+                if (xhr.status >= 200 && xhr.status < 300) {
+                    try { success(JSON.parse(xhr.responseText || '{}')); } catch (e) { fail(e); }
+                } else { fail(new Error('HTTP ' + xhr.status)); }
+            };
 
-    xhr.onerror = function () { if (!done) { done = true; fail(new Error('Network error')); } };
-    xhr.ontimeout = function () { if (!done) { done = true; fail(new Error('Timeout')); } };
+            xhr.onerror = function () { if (!done) { done = true; fail(new Error('Network error')); } };
+            xhr.ontimeout = function () { if (!done) { done = true; fail(new Error('Timeout')); } };
 
-    try {
-        // Умное проксирование: если у пользователя в Lampa настроен прокси/Lampac, 
-        // запрос к ИИ пойдет через него, обходя CORS и сетевые блокировки Smart TV
-            var finalUrl = url;
-            if (window.Lampa && Lampa.Proxy && Lampa.Proxy.url) {
-                finalUrl = Lampa.Proxy.url(url);
-            }
-
-            xhr.open(method, finalUrl, true);
-            xhr.timeout = 35000;
-            if (headers) {
-                for (var k in headers) if (headers.hasOwnProperty(k)) xhr.setRequestHeader(k, headers[k]);
-            }
-            xhr.send(body ? JSON.stringify(body) : null);
-        } catch (e) { fail(e); }
-    }
+            try {
+                // ЧИСТЫЙ ПРЯМОЙ ВАРИАНТ: убрали проксирование через Lampac,
+                // теперь запросы идут напрямую к Google Gemini и OMDb API
+                xhr.open(method, url, true);
+                xhr.timeout = 35000;
+                if (headers) {
+                    for (var k in headers) if (headers.hasOwnProperty(k)) xhr.setRequestHeader(k, headers[k]);
+                }
+                xhr.send(body ? JSON.stringify(body) : null);
+            } catch (e) { fail(e); }
+        }
 
     function deepSeek(prompt, system, maxTokens, success, fail, temperature) {
         var profile = activeProfile();
