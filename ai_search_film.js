@@ -1910,13 +1910,18 @@ function _0x582018() {
           _0x5af6ea(_0x4415ce);
           _0x29f497();
           var _0x535eda = _0x59bdaf.querySelectorAll(".ai-search-result-item");
-	function _0x3858b4(_0x27b7ab) {
+function _0x3858b4(_0x27b7ab) {
             if (!_0x27b7ab) {
               _0x29248a.warn("openMovie: элемент не найден");
               return;
             }
             var _0x5872ee = _0x27b7ab.getAttribute("data-movie-id");
             var _0x5c7b31 = _0x27b7ab.getAttribute("data-movie-type");
+            
+            // Получаем название фильма из HTML для передачи в движок Lampa (защита от ошибок)
+            var _0xTitleElem = _0x27b7ab.querySelector(".ai-search-result-title");
+            var _0xMovieTitle = _0xTitleElem ? _0xTitleElem.innerText : "";
+
             if (!_0x5872ee || !_0x5c7b31) {
               var _0x29cb51 = {
                 movieId: _0x5872ee,
@@ -1946,7 +1951,7 @@ function _0x582018() {
               try {
                 Lampa.Activity.push({
                   'url': '',
-                  'title': _0x5c7b31 === 'tv' ? Lampa.Lang.translate("ai_search_type_tv") : Lampa.Lang.translate("ai_search_type_movie"),
+                  'title': _0xMovieTitle || (_0x5c7b31 === 'tv' ? Lampa.Lang.translate("ai_search_type_tv") : Lampa.Lang.translate("ai_search_type_movie")),
                   'component': "full",
                   'id': _0x3ea04a,
                   'method': _0x5c7b31 === 'tv' ? 'tv' : "movie",
@@ -1955,7 +1960,9 @@ function _0x582018() {
                   'item': {
                     'id': _0x3ea04a,
                     'source': 'tmdb',
-                    'type': _0x5c7b31 === 'tv' ? 'tv' : "movie"
+                    'type': _0x5c7b31 === 'tv' ? 'tv' : "movie",
+                    'title': _0xMovieTitle, // Важно для отрисовки шапки компонента full
+                    'name': _0xMovieTitle   // Важно для сериалов
                   }
                 });
               } catch (_0x196a1d) {
@@ -1987,8 +1994,8 @@ function _0x582018() {
               }
               return false;
             };
-            // Убран нативный обработчик click во избежание конфликтов
-            // _0x365744.addEventListener('click', _0x26c6b4, true); 
+            // ВОЗВРАЩЕНО: Нативный клик мыши для ПК
+            _0x365744.addEventListener('click', _0x26c6b4, true); 
             _0xf99ee4(_0x365744, _0x26c6b4);
           });
           if (_0x50bc2a) {
