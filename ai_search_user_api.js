@@ -769,15 +769,16 @@
     }
 
     function openMovie(movie) {
-        try {
-            Lampa.Activity.push({
-                url: '', title: movie.title, component: 'full', id: movie.id, method: movie.media_type,
-                source: 'imdb', // Важно: сообщаем Lampa, что ID карточки — это IMDb токен (ttXXXXX)
-                card: movie
-            });
-            scheduleButtonScan();
-        } catch (e) { notify(t('error') + ': ' + e.message); }
-    }
+    try {
+        // Вместо открытия сломанной карточки, отправляем название в нативный поиск Lampa
+        Lampa.Activity.push({
+            url: '',
+            title: 'Поиск: ' + movie.title,
+            component: 'search',
+            query: movie.title
+        });
+    } catch (e) { notify(t('error') + ': ' + e.message); }
+}
 
     function showTextScreen(title, body) {
         var html = '<div class="ai-legacy-modal selector"><div class="ai-legacy-modal__box">' +
