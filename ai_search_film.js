@@ -1457,46 +1457,55 @@
         _0x5bbf6e();
       }
     });
-	function _0x582018() {
-		if (!_0x12668d) {
-			return;
-		}
-      
-		// Вызываем нативную клавиатуру Lampa
-		Lampa.Keyboard.edit({
-			title: Lampa.Lang.translate("ai_search_modal_label") || 'Поиск',
-			value: _0x12668d.value
-		}, function (new_value) {
-			_0x12668d.value = new_value;
-        // Возвращаем фокус на контроллер модального окна после закрытия клавиатуры
-			if (typeof Lampa.Controller.toggle === 'function') {
-           Lampa.Controller.toggle("ai_search_modal");
+function _0x582018() {
+        if (!_0x12668d) {
+            return;
         }
-      });
+        // Возвращаем обычный фокус браузера
+        _0x12668d.focus();
     }
-	
+    
     if (_0x12668d) {
-      _0x12668d.addEventListener("keydown", function (_0x5e31e9) {
-        if (_0x5e31e9.key === "Enter" || _0x5e31e9.keyCode === 0xd) {
-          _0x5e31e9.preventDefault();
-          _0x5e31e9.stopPropagation();
-          _0x5e31e9.stopImmediatePropagation();
-          _0x3958ff();
-          return false;
-        }
-      }, true);
-      _0x12668d.addEventListener('keypress', function (_0x4a1244) {
-        if (_0x4a1244.key === 'Enter' || _0x4a1244.keyCode === 0xd) {
-          _0x4a1244.preventDefault();
-          _0x4a1244.stopPropagation();
-          _0x4a1244.stopImmediatePropagation();
-          return false;
-        }
-      }, true);
-      
-      // Убран нативный addEventListener("click"), так как он конфликтует с Lampa
-      // Оставляем только системный вызов hover:enter через алиас плагина
-      _0xf99ee4(_0x12668d, _0x582018);
+        _0x12668d.addEventListener("keydown", function (_0x5e31e9) {
+            // КРИТИЧЕСКИ ВАЖНО: Полностью останавливаем всплытие событий клавиатуры.
+            // Теперь Lampa не будет перехватывать Backspace, Пробел, Стрелки и буквы при наборе!
+            _0x5e31e9.stopPropagation();
+            
+            if (_0x5e31e9.key === "Enter" || _0x5e31e9.keyCode === 0xd) {
+                _0x5e31e9.preventDefault();
+                _0x12668d.blur(); // Убираем курсор из поля
+                _0x3958ff(); // Запускаем поиск
+                
+                // Возвращаем управление навигацией пульту
+                if (typeof Lampa.Controller.toggle === 'function') {
+                    Lampa.Controller.toggle("ai_search_modal");
+                }
+                return false;
+            }
+        }, true);
+        
+        _0x12668d.addEventListener('keypress', function (_0x4a1244) {
+            _0x4a1244.stopPropagation();
+            if (_0x4a1244.key === 'Enter' || _0x4a1244.keyCode === 0xd) {
+                _0x4a1244.preventDefault();
+                return false;
+            }
+        }, true);
+        
+        // Возвращаем клик мыши для ПК, чтобы курсор появлялся моментально по первому клику
+        _0x12668d.addEventListener("click", function(e) {
+            e.stopPropagation();
+            _0x582018();
+        }, true);
+        
+        // Обработка кнопки "ОК" на пульте
+        _0xf99ee4(_0x12668d, function(e) {
+            if (e) {
+                e.stopPropagation();
+                e.preventDefault();
+            }
+            _0x582018();
+        });
     }
     function _0x1aaf94() {
       if (!Lampa || !Lampa.Controller || !_0x50bc2a) {
