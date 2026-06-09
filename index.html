@@ -187,7 +187,7 @@
             <div class="input-group">
                 <!-- Обязательно замените URL ниже на ссылку к вашему файлу скрипта -->
                 <div class="url-input" id="pluginUrl">https://neoandersen.github.io/lampa-plugins/ai_search_film.js</div>
-                <button class="copy-btn" onclick="copyLink()">Копировать</button>
+                <button class="copy-btn1" onclick="copyLink1()">Копировать</button>
             </div>
         </div>
     </main>
@@ -202,6 +202,20 @@
         var urlText = document.getElementById('pluginUrl').innerText;
         navigator.clipboard.writeText(urlText).then(function() {
             var btn = document.querySelector('.copy-btn');
+            btn.innerText = 'Скопировано!';
+            btn.classList.add('copied');
+            setTimeout(function() {
+                btn.innerText = 'Копировать';
+                btn.classList.remove('copied');
+            }, 2000);
+        }).catch(function(err) {
+            alert('Не удалось скопировать ссылку, скопируйте вручную.');
+        });
+    }
+        function copyLink1() {
+        var urlText = document.getElementById('pluginUrl').innerText;
+        navigator.clipboard.writeText(urlText).then(function() {
+            var btn = document.querySelector('.copy-btn1');
             btn.innerText = 'Скопировано!';
             btn.classList.add('copied');
             setTimeout(function() {
