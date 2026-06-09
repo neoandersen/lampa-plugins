@@ -411,9 +411,9 @@
       en: "Contact information"
     };
     var _0xd93466 = {
-      ru: "Email: admin@fovway.ru<br>Telegram: @fovway",
-      uk: "Email: admin@fovway.ru<br>Telegram: @fovway",
-      en: "Email: admin@fovway.ru<br>Telegram: @fovway"
+      ru: "Url: https://github.com/neoandersen/lampa-plugins<br>Telegram: @neoandersen",
+      uk: "Url: https://github.com/neoandersen/lampa-plugins<br>Telegram: @neoandersen",
+      en: "Url: https://github.com/neoandersen/lampa-plugins<br>Telegram: @neoandersen"
     };
     var _0x43cb24 = {
       ru: "Поиск фильмов",
