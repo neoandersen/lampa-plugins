@@ -147,50 +147,46 @@
         <p>Личные доработанные расширения без региональных блокировок</p>
     </header>
 
-    <main>
-        <!-- Карточка плагина ИИ Поиска -->
-        <div class="plugin-card">
-            <div class="plugin-header">
-                <div class="plugin-icon">
-                    <svg viewBox="0 0 24 24"><path d="M12 2L14.8 8.3L22 9L16.6 13.7L18.2 21L12 17.2L5.8 21L7.4 13.7L2 9L9.2 8.3L12 2Z"/></svg>
-                </div>
-                <div class="plugin-title">
-                    <h2>AI Search User API <span class="plugin-version">v1.1.0</span></h2>
-                </div>
+    <main style="display: flex; flex-direction: column; gap: 20px;"> <div class="plugin-card">
+        <div class="plugin-header">
+            <div class="plugin-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 2L14.8 8.3L22 9L16.6 13.7L18.2 21L12 17.2L5.8 21L7.4 13.7L2 9L9.2 8.3L12 2Z"/></svg>
             </div>
-            
-            <p class="plugin-desc">
-                Умный AI-ассистент для поиска фильмов и сериалов. Работает через известных провайдеров ИИ-моделей таких как OpenAI, DeepSeek, OpenRouter, Together, Groq, Gemini или Custom (включая бесплатные модели) напрямую в обход Lampac. Интегрирована подгрузка постеров и метаданных через OMDb API. Это облегчает получение API ключа, так как последнее время не проходит регистрация в TMDB.
-            </p>
-
-            <div class="input-group">
-                <!-- Обязательно замените URL ниже на ссылку к вашему файлу скрипта -->
-                <div class="url-input" id="pluginUrl">https://neoandersen.github.io/lampa-plugins/ai_search_user_api.js</div>
-                <button class="copy-btn" onclick="copyLink()">Копировать</button>
+            <div class="plugin-title">
+                <h2>AI Search User API <span class="plugin-version">v1.1.0</span></h2>
             </div>
         </div>
-         <!-- Карточка плагина ИИ Поиска фильмов-->
-        <div class="plugin-card">
-            <div class="plugin-header">
-                <div class="plugin-icon">
-                    <svg viewBox="0 0 24 24"><path d="M12 2L14.8 8.3L22 9L16.6 13.7L18.2 21L12 17.2L5.8 21L7.4 13.7L2 9L9.2 8.3L12 2Z"/></svg>
-                </div>
-                <div class="plugin-title">
-                    <h2>AI Поиск фильмов <span class="plugin-version">v1.0.0</span></h2>
-                </div>
-            </div>
-            
-            <p class="plugin-desc">
-               Плагин ИИ Поиск фильмов — это умный помощник для поиска фильмов и сериалов в приложении Lampa. Вместо обычного поиска по названию, вы можете описать, что хотите посмотреть, используя естественный язык, и искусственный интеллект найдет подходящие варианты. Работает на базе OpenRouter API (рекомендуется использование бесплатных моделей от OpenAI, Google). Адаптирована под любые устройства с использованием пульта, пульт+мышь, мышь+клавиатура на базе AndroidTV, GoogleTV, ПК приложения Lampa, браузер на ПК. 
-            </p>
+        
+        <p class="plugin-desc">
+            Умный AI-ассистент для поиска фильмов и сериалов. Работает через известных провайдеров ИИ-моделей таких как OpenAI, DeepSeek, OpenRouter, Together, Groq, Gemini или Custom (включая бесплатные модели) напрямую в обход Lampac. Интегрирована подгрузка постеров и метаданных через OMDb API. Это облегчает получение API ключа, так как последнее время не проходит регистрация в TMDB.
+        </p>
 
-            <div class="input-group">
-                <!-- Обязательно замените URL ниже на ссылку к вашему файлу скрипта -->
-                <div class="url-input" id="pluginUrl">https://neoandersen.github.io/lampa-plugins/ai_search_film.js</div>
-                <button class="copy-btn" onclick="copyLink1()">Копировать</button>
+        <div class="input-group">
+            <div class="url-input" id="pluginUrl1">https://neoandersen.github.io/lampa-plugins/ai_search_user_api.js</div>
+            <button class="copy-btn" onclick="copyLink(this, 'pluginUrl1')">Копировать</button>
+        </div>
+    </div>
+
+     <div class="plugin-card">
+        <div class="plugin-header">
+            <div class="plugin-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 2L14.8 8.3L22 9L16.6 13.7L18.2 21L12 17.2L5.8 21L7.4 13.7L2 9L9.2 8.3L12 2Z"/></svg>
+            </div>
+            <div class="plugin-title">
+                <h2>AI Поиск фильмов <span class="plugin-version">v1.0.0</span></h2>
             </div>
         </div>
-    </main>
+        
+        <p class="plugin-desc">
+           Плагин ИИ Поиск фильмов — это умный помощник для поиска фильмов и сериалов в приложении Lampa. Вместо обычного поиска по названию, вы можете описать, что хотите посмотреть, используя естественный язык, и искусственный интеллект найдет подходящие варианты. Работает на базе OpenRouter API (рекомендуется использование бесплатных моделей от OpenAI, Google). Адаптирована под любые устройства с использованием пульта, пульт+мышь, мышь+клавиатура на базе AndroidTV, GoogleTV, ПК приложения Lampa, браузер на ПК. 
+        </p>
+
+        <div class="input-group">
+            <div class="url-input" id="pluginUrl2">https://neoandersen.github.io/lampa-plugins/ai_search_film.js</div>
+            <button class="copy-btn" onclick="copyLink(this, 'pluginUrl2')">Копировать</button>
+        </div>
+    </div>
+</main>
 
     <footer>
         <p>© 2026 Powered by GitHub Pages</p>
@@ -198,29 +194,18 @@
 </div>
 
 <script>
-    function copyLink() {
-        var urlText = document.getElementById('pluginUrl').innerText;
+    function copyLink(btnElement, urlElementId) {
+        // Берем текст по переданному ID
+        var urlText = document.getElementById(urlElementId).innerText;
+        
         navigator.clipboard.writeText(urlText).then(function() {
-            var btn = document.querySelector('.copy-btn');
-            btn.innerText = 'Скопировано!';
-            btn.classList.add('copied');
+            // Меняем текст именно на той кнопке, которую нажали
+            btnElement.innerText = 'Скопировано!';
+            btnElement.classList.add('copied');
+            
             setTimeout(function() {
-                btn.innerText = 'Копировать';
-                btn.classList.remove('copied');
-            }, 2000);
-        }).catch(function(err) {
-            alert('Не удалось скопировать ссылку, скопируйте вручную.');
-        });
-    }
-        function copyLink1() {
-        var urlText = document.getElementById('pluginUrl').innerText;
-        navigator.clipboard.writeText(urlText).then(function() {
-            var btn = document.querySelector('.copy-btn');
-            btn.innerText = 'Скопировано!';
-            btn.classList.add('copied');
-            setTimeout(function() {
-                btn.innerText = 'Копировать';
-                btn.classList.remove('copied');
+                btnElement.innerText = 'Копировать';
+                btnElement.classList.remove('copied');
             }, 2000);
         }).catch(function(err) {
             alert('Не удалось скопировать ссылку, скопируйте вручную.');
