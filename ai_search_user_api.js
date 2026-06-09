@@ -21,7 +21,12 @@
         openrouter: { title: 'OpenRouter', base: 'https://openrouter.ai/api/v1', model: 'openai/gpt-4o-mini', mode: 'openai' },
         together: { title: 'Together', base: 'https://api.together.xyz/v1', model: 'meta-llama/Llama-3.3-70B-Instruct-Turbo-Free', mode: 'openai' },
         groq: { title: 'Groq', base: 'https://api.groq.com/openai/v1', model: 'llama-3.1-8b-instant', mode: 'openai' },
-        gemini: { title: 'Gemini', base: 'https://generativelanguage.googleapis.com/v1beta', model: 'gemini-1.5-flash', mode: 'gemini' },
+        gemini: { 
+    title: 'Gemini', 
+    base: 'https://generativelanguage.googleapis.com/v1beta/openai', // Важно наличие /openai в конце для совместимости
+    model: 'gemini-1.5-flash', 
+    mode: 'openai' 
+    },
         custom: { title: 'Custom', base: '', model: '', mode: 'openai' }
     };
     var SCAN_TIMER = null;
